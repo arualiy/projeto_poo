@@ -8,7 +8,7 @@ class IProduto(ABC):
         pass
 
 class Produto(IProduto):
-    def _init_(self, nome, preco):
+    def __init__(self, nome, preco):
         self.nome = nome
         self.preco = preco
 
@@ -16,15 +16,15 @@ class Produto(IProduto):
         return f"Produto: {self.nome} | Preço: R${self.preco:.2f}"
 
 class ProdutoEletronico(Produto):
-    def _init_(self, nome, preco, marca):
-        super()._init_(nome, preco)
+    def __init__(self, nome, preco, marca):
+        super().__init__(nome, preco)
         self.marca = marca
 
     def exibir_info(self):
         return super().exibir_info() + f" | Marca: {self.marca}"
 
 class ProdutoVestuario(Produto):
-    def _init_(self, nome, preco, tamanho):
+    def __init__(self, nome, preco, tamanho):
         super()._init_(nome, preco)
         self.tamanho = tamanho
 
@@ -32,7 +32,7 @@ class ProdutoVestuario(Produto):
         return super().exibir_info() + f" | Tamanho: {self.tamanho}"
 
 class CarrinhoDeCompras:
-    def _init_(self):
+    def __init__(self):
         self.produtos = []
 
     def adicionar_produto(self, produto):
@@ -45,7 +45,7 @@ class CarrinhoDeCompras:
         return [produto.exibir_info() for produto in self.produtos]
 
 class Cliente:
-    def _init_(self, nome):
+    def __init__(self, nome):
         self.nome = nome
         self.carrinho = CarrinhoDeCompras()
 
